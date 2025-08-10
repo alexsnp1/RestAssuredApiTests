@@ -1,8 +1,9 @@
 import org.junit.jupiter.api.Test;
-import static io.restassured.RestAssured.given;
+
+import static io.restassured.RestAssured.*;
 import static io.restassured.http.ContentType.JSON;
 import static org.hamcrest.Matchers.*;
-public class CreateUserTests {
+public class CreateUserTests extends TestBase {
 
     @Test
     void successfulCreateTest() {
@@ -17,7 +18,7 @@ public class CreateUserTests {
                 .log().uri()
                 .header("x-api-key", "reqres-free-v1")
                 .when()
-                .post("https://reqres.in/api/users")
+                .post(baseURI + basePath + "/users")
                 .then()
                 .log().status()
                 .log().body()

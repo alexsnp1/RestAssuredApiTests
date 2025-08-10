@@ -1,8 +1,9 @@
 import org.junit.jupiter.api.Test;
-import static io.restassured.RestAssured.given;
+
+import static io.restassured.RestAssured.*;
 import static io.restassured.http.ContentType.JSON;
 import static org.hamcrest.Matchers.*;
-public class RegistrationTests {
+public class RegistrationTests extends TestBase {
 
     @Test
     void successfulRegisterTest() {
@@ -17,7 +18,7 @@ public class RegistrationTests {
                 .log().uri()
                 .header("x-api-key", "reqres-free-v1")
                 .when()
-                .post("https://reqres.in/api/register")
+                .post(baseURI + basePath + "/register")
                 .then()
                 .log().status()
                 .log().body()
@@ -37,7 +38,7 @@ public class RegistrationTests {
                 .log().uri()
                 .header("x-api-key", "reqres-free-v1")
                 .when()
-                .post("https://reqres.in/api/register")
+                .post(baseURI + basePath + "/register")
                 .then()
                 .log().status()
                 .log().body()

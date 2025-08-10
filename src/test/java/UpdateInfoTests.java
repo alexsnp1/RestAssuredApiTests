@@ -1,8 +1,9 @@
 import org.junit.jupiter.api.Test;
-import static io.restassured.RestAssured.given;
+
+import static io.restassured.RestAssured.*;
 import static io.restassured.http.ContentType.JSON;
 import static org.hamcrest.Matchers.*;
-public class UpdateInfoTests {
+public class UpdateInfoTests extends TestBase {
 
     @Test
     void successfulUpdateWithPutTest() {
@@ -17,7 +18,7 @@ public class UpdateInfoTests {
                 .log().uri()
                 .header("x-api-key", "reqres-free-v1")
                 .when()
-                .put("https://reqres.in/api/users/2")
+                .put(baseURI + basePath + "/users/2")
                 .then()
                 .log().status()
                 .log().body()
@@ -40,7 +41,7 @@ public class UpdateInfoTests {
                 .log().uri()
                 .header("x-api-key", "reqres-free-v1")
                 .when()
-                .patch("https://reqres.in/api/users/2")
+                .patch(baseURI + basePath + "/users/2")
                 .then()
                 .log().status()
                 .log().body()
