@@ -18,7 +18,7 @@ public class CreateUserTests extends TestBase {
                 .log().uri()
                 .header("x-api-key", "reqres-free-v1")
                 .when()
-                .post(baseURI + basePath + "/users")
+                .post("/users")
                 .then()
                 .log().status()
                 .log().body()

@@ -11,7 +11,7 @@ public class DeleteUserTests extends TestBase {
                 .log().uri()
                 .header("x-api-key", "reqres-free-v1")
                 .when()
-                .delete(baseURI + basePath + "/users/2")
+                .delete("/users/2")
                 .then()
                 .log().status()
                 .log().body()
